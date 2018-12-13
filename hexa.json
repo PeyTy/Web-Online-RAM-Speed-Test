@@ -1,0 +1,17 @@
+{
+	"name": "RAM",
+	"version": "1.0.0",
+	"description": "",
+	"author": "PeyTy",
+	"license": "LGPL-3.0",
+	"output": "ram.js",
+	"target": {
+		"generator": "JavaScript",
+		"instance": {
+			"generatePackageJson": false
+		}
+	},
+	"files": [
+		"ram.hexa"
+	]
+}

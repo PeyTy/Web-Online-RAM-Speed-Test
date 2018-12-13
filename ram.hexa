@@ -1,0 +1,51 @@
+declare class Float64Array {
+	new (size: Int)
+	function fill (value: Float)
+	function copyWithin (a: Int, b: Int, c: Int)
+	let length: Int
+}
+
+console.log('Engage!')
+
+let bytes = (1024 * 1024 * 1024 * 1) || 0 // 1 Gb
+
+let half_of_elements = ((bytes) / 8) / 2
+
+// Float64Array is the fastest one
+
+let gigabyte = 134217728
+
+let two_gigabyte = 268435456
+
+let view = new Float64Array(two_gigabyte - 2)//new ArrayBuffer(bytes));
+
+// Pre-fill to avoid swap
+
+view.fill(123)
+
+view.fill(234)
+
+console.log(view.length)
+
+var best = 9999
+ {
+	var i = 0
+	while (i < 20) { // 20 times
+		let begin = Date.now()
+		view.copyWithin(gigabyte, 0, gigabyte)
+		let diff = Date.now() - begin
+		if (diff < best) best = diff
+		i++
+	}
+}
+
+declare let document: { write: (html: String) => Void }
+document.write(
+	'<br><b>RAM Speed fill: 1 Gb in ' +
+	(best) +
+	'ms at ' +
+	Math.round((1 / ((best) / 1000)) * 1000 * 3) +
+	' megabytes per second</b><br>'
+)
+
+console.log('Engines off!')
