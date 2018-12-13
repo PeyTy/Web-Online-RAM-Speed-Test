@@ -52,7 +52,7 @@
 						i++;
 					};
 				};
-				document.write('<br><b>RAM Speed fill: 1 Gb in ' + (best) + 'ms at ' + Math.round((1 / ((best) / 1000)) * 1000 * 3) + ' megabytes per second</b><br>');
+				document.write('<p><b>RAM Speed fill: 1 Gb in ' + (best) + 'ms at ' + Math.round((1 / ((best) / 1000)) * 1000 * 3) + ' megabytes per second</b></p>');
 				console.log('Engines off!');
 			};
 		}

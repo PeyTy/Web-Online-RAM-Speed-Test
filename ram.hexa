@@ -41,11 +41,11 @@ var best = 9999
 
 declare let document: { write: (html: String) => Void }
 document.write(
-	'<br><b>RAM Speed fill: 1 Gb in ' +
+	'<p><b>RAM Speed fill: 1 Gb in ' +
 	(best) +
 	'ms at ' +
 	Math.round((1 / ((best) / 1000)) * 1000 * 3) +
-	' megabytes per second</b><br>'
+	' megabytes per second</b></p>'
 )
 
 console.log('Engines off!')
