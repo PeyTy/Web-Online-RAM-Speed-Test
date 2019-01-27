@@ -1,0 +1,23 @@
+# SEO related
+
+title: "Web Online RAM Speed Test"
+twitter: "@hexalang"
+author: "PeyTy"
+description: "Try Web Online RAM Speed Test without any external apps just in your browser!"
+image: "https://hexalang.github.io/logo.png"
+url: "https://peyty.github.io/Web-Online-RAM-Speed-Test/index.html"
+theme-color: "#66ccff"
+social:
+  name: Hexa Programming Language
+  links:
+    - https://twitter.com/hexalang
+    - https://github.com/hexalang
+
+# Build settings
+markdown: kramdown
+plugins:
+   - jemoji
+   - jekyll-seo-tag
+   - jekyll-sitemap
+kramdown:
+  autolink: true
