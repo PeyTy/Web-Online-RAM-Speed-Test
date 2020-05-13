@@ -7,48 +7,74 @@ declare class Float64Array {
 
 window.window.document.getElementById('test').onclick = function () {
 
+let alloc05: Bool = window.window.document.getElementById('alloc05').checked
+let alloc1: Bool = window.window.document.getElementById('alloc1').checked
+let alloc2: Bool = window.window.document.getElementById('alloc2').checked
+
+let multiplier = if (alloc05) 1 else if (alloc1) 2 else if (alloc2) 4 else 8
+
 console.log('Engage!')
 
-let bytes = (1024 * 1024 * 1024 * 1) || 0 // 1 Gb
+let bytes1Gb = 1024 * 1024 * 1024
 
-let half_of_elements = ((bytes) / 8) / 2
 
 // Float64Array is the fastest one
 
-let gigabyte = 134217728
+let gigabyte = 33554432 * multiplier // One Float64 = 8 bytes
 
-let two_gigabyte = 268435456
+let two_gigabyte = gigabyte * 2
 
-let view = new Float64Array(two_gigabyte - 2)//new ArrayBuffer(bytes));
-
+try {
+let view = new Float64Array(two_gigabyte)//new ArrayBuffer(bytes));
+let cache = new Float64Array(1024 * 1024 * 4)
 // Pre-fill to avoid swap
 
 view.fill(123)
-
 view.fill(234)
+view.fill(456)
 
-console.log(view.length)
+let bytes = view.length * 8
+console.log(bytes + ' bytes', (bytes / bytes1Gb) + ' gigabytes')
 
-var best: Float = 9999
- {
 	var i = 0
 	while (i < 20) { // 20 times
-		let begin = Date.now()
+		cache.fill(123 + i + 0)
+		cache.fill(123 + i + 1)
+		cache.fill(123 + i + 2)
+
+		let begin1 = Date.now()
 		view.copyWithin(gigabyte, 0, gigabyte)
-		let diff = Date.now() - begin
+		let diff1 = Date.now() - begin1
+
+		cache.fill(123 + i + 0)
+		cache.fill(123 + i + 1)
+		cache.fill(123 + i + 2)
+
+		let begin2 = Date.now()
+		view.copyWithin(0, gigabyte, gigabyte + gigabyte)
+		let diff2 = Date.now() - begin2
+
+		cache.fill(123 + i + 0)
+		cache.fill(123 + i + 1)
+		cache.fill(123 + i + 2)
+
+		let diff = if (diff1 > diff2) diff1 else diff2
+
 		if (diff < best) best = diff
+
 		i++
 	}
-}
 
-window.window.document.getElementById('results').innerHTML = (
-	'<p><b>RAM Speed fill: 1 Gb in ' +
-	(best) +
-	'ms at ' +
-	Math.round((1 / ((best) / 1000)) * 1000 * 3) +
-	' megabytes per second</b></p>'
-)
-
+	window.window.document.getElementById('results').innerHTML = (
+		'<p><b>RAM Speed fill: \(multiplier / 4) Gb in ' +
+		(best) +
+		'ms at ' +
+		(Math.round((1 / ((best) / 1000)) * 1000 * 3) * (multiplier / 4)) +
+		' megabytes per second</b></p>'
+	)
 console.log('Engines off!')
+} catch(e: Any) {
+	window.window.alert('Array buffer allocation failed. Try lower value, other browser or free some RAM!')
+}
 
 }
