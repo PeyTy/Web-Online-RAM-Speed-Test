@@ -5,6 +5,14 @@
 	"author": "PeyTy",
 	"license": "LGPL-3.0",
 	"output": "ram.js",
+	"targets": [
+		{
+			"name": "default",
+			"generator": "js",
+			"options": ["browser"],
+			"output": "ram-tester.js"
+		}
+	],
 	"target": {
 		"generator": "JavaScript",
 		"instance": {

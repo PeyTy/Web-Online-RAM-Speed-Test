@@ -5,6 +5,8 @@ declare class Float64Array {
 	let length: Int
 }
 
+window.window.document.getElementById('test').onclick = function () {
+
 console.log('Engage!')
 
 let bytes = (1024 * 1024 * 1024 * 1) || 0 // 1 Gb
@@ -27,7 +29,7 @@ view.fill(234)
 
 console.log(view.length)
 
-var best = 9999
+var best: Float = 9999
  {
 	var i = 0
 	while (i < 20) { // 20 times
@@ -39,9 +41,8 @@ var best = 9999
 	}
 }
 
-declare let document: { write: (html: String) => Void }
-document.write(
-	'<p><b>RAM Speed fill: 1 Gb in ' +
+window.window.document.getElementById('results').innerHTML = (
+	'<p><b>RAM Speed fill: 12 Gb in ' +
 	(best) +
 	'ms at ' +
 	Math.round((1 / ((best) / 1000)) * 1000 * 3) +
@@ -49,3 +50,5 @@ document.write(
 )
 
 console.log('Engines off!')
+
+}
