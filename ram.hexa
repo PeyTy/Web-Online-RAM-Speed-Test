@@ -36,6 +36,7 @@ view.fill(456)
 let bytes = view.length * 8
 console.log(bytes + ' bytes', (bytes / bytes1Gb) + ' gigabytes')
 
+	var best: Float = 99999
 	var i = 0
 	while (i < 20) { // 20 times
 		cache.fill(123 + i + 0)
