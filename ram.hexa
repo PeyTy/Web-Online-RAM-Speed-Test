@@ -42,7 +42,7 @@ var best: Float = 9999
 }
 
 window.window.document.getElementById('results').innerHTML = (
-	'<p><b>RAM Speed fill: 12 Gb in ' +
+	'<p><b>RAM Speed fill: 1 Gb in ' +
 	(best) +
 	'ms at ' +
 	Math.round((1 / ((best) / 1000)) * 1000 * 3) +

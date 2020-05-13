@@ -5,8 +5,8 @@
 	"use strict"
 	const $global = typeof(window) === "undefined"? global : window
 	if (typeof($global.require) === "undefined") { $global.require = function () {} };
-	var console_86 = $global.console
-	function hasOwnProperty(object_120, name_121) { return object_120.hasOwnProperty(name_121) };
+	var console_73 = $global.console
+	function hasOwnProperty(object_107, name_108) { return object_107.hasOwnProperty(name_108) };
 	{
 		{
 			window.window.document.getElementById('test').onclick = () => {
@@ -30,7 +30,7 @@
 						i++;
 					};
 				};
-				window.window.document.getElementById('results').innerHTML = ('<p><b>RAM Speed fill: 12 Gb in ' + (best) + 'ms at ' + Math.round((1 / ((best) / 1000)) * 1000 * 3) + ' megabytes per second</b></p>');
+				window.window.document.getElementById('results').innerHTML = ('<p><b>RAM Speed fill: 1 Gb in ' + (best) + 'ms at ' + Math.round((1 / ((best) / 1000)) * 1000 * 3) + ' megabytes per second</b></p>');
 				console.log('Engines off!');
 			};
 		}
